@@ -1,8 +1,3 @@
--- ~/.config/nvim/lua/plugins/lsp.lua
---
--- -- ~/.config/nvim/lua/plugins/bufferline.lua
--- ~/.config/nvim/lua/plugins/lsp.lua
-
 return {
   {
     "mason-org/mason.nvim",
@@ -18,11 +13,7 @@ return {
       "neovim/nvim-lspconfig",
     },
     opts = {
-      ensure_installed = {
-        "lua_ls",
-        "pyright",
-        "tinymist",
-      },
+      ensure_installed = { "lua_ls", "pyright", "tinymist" },
     },
   },
 
@@ -42,12 +33,8 @@ return {
         },
         settings = {
           Lua = {
-            runtime = {
-              version = "LuaJIT",
-            },
-            diagnostics = {
-              globals = { "vim" },
-            },
+            runtime = { version = "LuaJIT" },
+            diagnostics = { globals = { "vim" } },
             workspace = {
               checkThirdParty = false,
               library = {
@@ -56,9 +43,7 @@ return {
                 vim.fn.stdpath("data") .. "/lazy",
               },
             },
-            telemetry = {
-              enable = false,
-            },
+            telemetry = { enable = false },
           },
         },
       })
@@ -73,11 +58,7 @@ return {
         filetypes = { "typst" },
       })
 
-      vim.lsp.enable({
-        "lua_ls",
-        "pyright",
-        "tinymist",
-      })
+      vim.lsp.enable({ "lua_ls", "pyright", "tinymist" })
     end,
   },
 }

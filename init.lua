@@ -1,9 +1,6 @@
--- ~/.config/nvim/init.lua
-
 require("config.options")
+require("config.neovide")
 require("config.keymaps")
-require("config.autocmds")
+require("config.ai-buffer")
+require("config.commands")
 require("config.lazy")
-
-
-

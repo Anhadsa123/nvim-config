@@ -1,4 +1,4 @@
--- ~/.config/nvim/lua/config/options.lua
+vim.env.PATH = vim.fn.expand("~/.local/bin") .. ":" .. vim.env.PATH
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
@@ -11,7 +11,7 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.smartindent = true
 
-vim.o.wrap = false
+vim.o.wrap = true
 vim.o.termguicolors = true
 vim.o.signcolumn = "yes"
 
@@ -27,9 +27,11 @@ vim.o.backup = false
 
 vim.o.updatetime = 250
 vim.o.timeoutlen = 400
+vim.o.autoread = true
 
-vim.o.autoread = false
-
+vim.o.wildmenu = true
+vim.o.wildmode = "longest:full,full"
+vim.o.wildoptions = "pum"
 
 vim.diagnostic.config({
   virtual_text = false,
@@ -43,43 +45,7 @@ vim.diagnostic.config({
   },
 })
 
-vim.o.wildmenu = true
-vim.o.wildmode = "longest:full,full"
-vim.o.wildoptions = "pum"
-
--- ~/.config/nvim/lua/config/options.lua
-
-
--- Transparent Neovim background
-vim.api.nvim_create_autocmd("ColorScheme", {
-  pattern = "*",
-  callback = function()
-    local groups = {
-      "Normal",
-      "NormalNC",
-      "NormalFloat",
-      "FloatBorder",
-      "Pmenu",
-      "PmenuSel",
-      "SignColumn",
-      "LineNr",
-      "CursorLineNr",
-      "StatusLine",
-      "StatusLineNC",
-      "TabLine",
-      "TabLineFill",
-      "TabLineSel",
-      "WinSeparator",
-    }
-
-    for _, group in ipairs(groups) do
-      vim.api.nvim_set_hl(0, group, { bg = "none" })
-    end
-  end,
-})
-
--- Apply immediately too
-local groups = {
+local transparent_groups = {
   "Normal",
   "NormalNC",
   "NormalFloat",
@@ -97,14 +63,15 @@ local groups = {
   "WinSeparator",
 }
 
-for _, group in ipairs(groups) do
-  vim.api.nvim_set_hl(0, group, { bg = "none" })
+local function set_transparent_bg()
+  for _, group in ipairs(transparent_groups) do
+    vim.api.nvim_set_hl(0, group, { bg = "none" })
+  end
 end
 
-if vim.g.neovide then
-  vim.g.neovide_opacity = 0.75
-  vim.g.neovide_normal_opacity = 0.75
-end
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  callback = set_transparent_bg,
+})
 
-
-
+set_transparent_bg()

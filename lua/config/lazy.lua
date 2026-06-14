@@ -1,5 +1,3 @@
--- ~/.config/nvim/lua/config/lazy.lua
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.uv.fs_stat(lazypath) then
@@ -19,10 +17,6 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
-  checker = {
-    enabled = false,
-  },
-  change_detection = {
-    notify = false,
-  },
+  checker = { enabled = false },
+  change_detection = { notify = false },
 })

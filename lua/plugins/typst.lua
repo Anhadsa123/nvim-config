@@ -1,4 +1,12 @@
--- ~/.config/nvim/lua/plugins/typst.lua
+local function setup_typst_conceal()
+  vim.opt_local.conceallevel = 2
+  vim.opt_local.concealcursor = "nc"
+end
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "typst",
+  callback = setup_typst_conceal,
+})
 
 return {
   {
@@ -7,20 +15,20 @@ return {
     version = "1.*",
     opts = {
       dependencies_bin = {
-        ["tinymist"] = "tinymist",
+        tinymist = "tinymist",
       },
     },
     keys = {
-      {
-        "<leader>tp",
-        "<cmd>TypstPreview<cr>",
-        desc = "Typst preview",
-      },
-      {
-        "<leader>ts",
-        "<cmd>TypstPreviewStop<cr>",
-        desc = "Stop Typst preview",
-      },
+      { "<leader>tp", "<cmd>TypstPreview<cr>", desc = "Typst preview" },
+      { "<leader>ts", "<cmd>TypstPreviewStop<cr>", desc = "Stop Typst preview" },
     },
+  },
+
+  {
+    "pxwg/math-conceal.nvim",
+    ft = "typst",
+    config = function()
+      require("math-conceal").setup({})
+    end,
   },
 }
