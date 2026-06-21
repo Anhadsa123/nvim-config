@@ -1,6 +1,7 @@
 local local_bin = vim.fn.expand("~/.local/bin")
 if vim.fn.isdirectory(local_bin) == 1 then
-  vim.env.PATH = local_bin .. vim.o.pathsep .. vim.env.PATH
+  local path_sep = vim.fn.has("win32") == 1 and ";" or ":"
+  vim.env.PATH = local_bin .. path_sep .. vim.env.PATH
 end
 
 vim.g.mapleader = " "
