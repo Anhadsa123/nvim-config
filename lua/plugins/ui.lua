@@ -1,5 +1,13 @@
 return {
   {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+      preset = "helix",
+    },
+  },
+
+  {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,

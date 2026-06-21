@@ -1,4 +1,7 @@
-vim.env.PATH = vim.fn.expand("~/.local/bin") .. ":" .. vim.env.PATH
+local local_bin = vim.fn.expand("~/.local/bin")
+if vim.fn.isdirectory(local_bin) == 1 then
+  vim.env.PATH = local_bin .. vim.o.pathsep .. vim.env.PATH
+end
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
