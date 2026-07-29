@@ -2,8 +2,8 @@ if not vim.g.neovide then
   return
 end
 
-vim.g.neovide_opacity = 0.75
-vim.g.neovide_normal_opacity = 0.75
+vim.g.neovide_opacity = 0.55
+vim.g.neovide_normal_opacity = 0.55
 
 local FONT_FAMILY = "IBM Plex Mono"
 local DEFAULT_FONT_SIZE = 15
