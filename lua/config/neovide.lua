@@ -22,7 +22,7 @@ local function set_font_size(size)
 end
 
 set_font_size(DEFAULT_FONT_SIZE)
-
+vim.g.neovide_refresh_rate = 144
 vim.api.nvim_create_user_command("FontSize", function(opts)
   local size = tonumber(opts.args)
   if not size then
