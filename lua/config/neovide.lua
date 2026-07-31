@@ -6,7 +6,7 @@ vim.g.neovide_opacity = 0.45
 vim.g.neovide_normal_opacity = 0.45
 
 local FONT_FAMILY = "IBM Plex Mono"
-local DEFAULT_FONT_SIZE = 15
+local DEFAULT_FONT_SIZE = 12
 local MIN_FONT_SIZE = 8
 local MAX_FONT_SIZE = 40
 
